@@ -19,5 +19,13 @@ pipeline{
                }
            }
         }
+        stage('Checkout SCM) {
+            steps{
+                script{
+                    git credentialsId: 'github'
+                    git credentialsId: 'dockerhub'
+                }
+            }
+        }
     }
 }
