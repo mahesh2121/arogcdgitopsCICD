@@ -1,11 +1,18 @@
 pipeline{
    agent any 
    environment {
+<<<<<<< HEAD
 
      DOCKERHUB_USERNAME = "maheshgaikwad21"
      APP_NAME = "gitops_argocd-app"
      IMAGE_TAG = "${BUILD_NUMBER}"
      IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
+=======
+     DOCKERHUB_USERNAME = "maheshgaikwad21"
+     APP_NAME = "gitops_argocd-app"
+     IMAGE_TAG = "${BUILD_NUMBER}"
+     IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}
+>>>>>>> 7fd1d67d76aaa5d1da3c9c8de49d6eb5e133cd17
      REGISTRY_CRDS = 'dockerhub'    
    }
        stages{
@@ -19,6 +26,7 @@ pipeline{
                      cleanWs()
                }
            }
+<<<<<<< HEAD
         } 
         stage('Checkout SCM') {
            steps{
@@ -32,5 +40,16 @@ pipeline{
            }
         }
 
+=======
+        }
+        stage('Checkout SCM) {
+            steps{
+                script{
+                    git credentialsId: 'github'
+                    git credentialsId: 'dockerhub'
+                }
+            }
+        }
+>>>>>>> 7fd1d67d76aaa5d1da3c9c8de49d6eb5e133cd17
     }
 }
