@@ -1,0 +1,36 @@
+pipeline{
+   agent any 
+   environment {
+
+     DOCKERHUB_USERNAME = "maheshgaikwad21"
+     APP_NAME = "gitops_argocd-app"
+     IMAGE_TAG = "${BUILD_NUMBER}"
+     IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
+     REGISTRY_CRDS = 'dockerhub'    
+   }
+       stages{
+
+        stage('Clenup workspace'){
+
+           steps{
+
+               script{
+
+                     cleanWs()
+               }
+           }
+        } 
+        stage('Checkout SCM') {
+           steps{
+
+               script{
+
+                     git credentialsId: 'github',
+                     url: https://github.com/mahesh2121/arogcdgitopsCICD.git,
+                     branch: 'main'
+               }
+           }
+        }
+
+    }
+}
