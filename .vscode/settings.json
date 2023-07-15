@@ -1,9 +1,9 @@
 {
     "jenkins-runner.jobs": {
-        "arogcdgitopsCICD": {
+        "gitops-argocd_CI": {
             "isDefault": true,
             "runWith": "jenkins-master",
-            "name": "arogcdgitopsCICD"
+            "name": "gitops-argocd_CI"
     }
    },
    "jenkins-runner.hostConfigs": {
