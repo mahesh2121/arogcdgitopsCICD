@@ -1,55 +1,39 @@
 pipeline{
-   agent any 
+   agent any
+
    environment {
-<<<<<<< HEAD
-
-     DOCKERHUB_USERNAME = "maheshgaikwad21"
-     APP_NAME = "gitops_argocd-app"
-     IMAGE_TAG = "${BUILD_NUMBER}"
-     IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
-=======
-     DOCKERHUB_USERNAME = "maheshgaikwad21"
-     APP_NAME = "gitops_argocd-app"
-     IMAGE_TAG = "${BUILD_NUMBER}"
-     IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}
->>>>>>> 7fd1d67d76aaa5d1da3c9c8de49d6eb5e133cd17
-     REGISTRY_CRDS = 'dockerhub'    
+      
+      DOCKERHUB_USERNAME = "maheshgaikwad21"
+      APP_NAME = "gitops_argocd-app"
+      IMAGE_TAG = "${BUILD_NUMBER}"
+      IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
+      REGISTRY_CRDS = 'dockerhub'    
    }
-       stages{
+   stages{
 
-        stage('Clenup workspace'){
+      stage('Clenup workspace'){
 
-           steps{
+          steps{
 
-               script{
+              script{
 
-                     cleanWs()
-               }
+                  cleanWs()
+              }
            }
-<<<<<<< HEAD
-        } 
-        stage('Checkout SCM') {
-           steps{
+      } 
+      stage('Checkout SCM') {
+          steps{
 
-               script{
+              script{
 
-                     git credentialsId: 'github',
-                     url: https://github.com/mahesh2121/arogcdgitopsCICD.git,
-                     branch: 'main'
-               }
-           }
-        }
+                  git credentialsId: 'github',
+                  url: 'https://github.com/mahesh2121/arogcdgitopsCICD.git' ,
+                  branch: 'main'
+              }
+          }
+      }
 
-=======
-        }
-        stage('Checkout SCM) {
-            steps{
-                script{
-                    git credentialsId: 'github'
-                    git credentialsId: 'dockerhub'
-                }
-            }
-        }
->>>>>>> 7fd1d67d76aaa5d1da3c9c8de49d6eb5e133cd17
     }
 }
+
+
